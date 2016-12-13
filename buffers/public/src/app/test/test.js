@@ -1,15 +1,12 @@
 import axios from 'axios';
-import protobuf from 'protobufjs';
+import * as protobuf from 'protobufjs';
 
 const testTextArea = document.querySelector('textarea.test-area');
+let TestMessage = protobuf.load('./protos/message.proto')
+    .then((root) => {
+        TestMessage = root.lookup('testpackage.TestMessage');
+    });
 
-function loadMessage(response) {
-    return protobuf.load('./protos/message.proto')
-        .then((root) => {
-            const TestMessage = root.lookup('testpackage.TestMessage');
-            return TestMessage.decode(response.data)
-        })
-}
 
 function init(count = 1) {
     return axios.get('/data', {
@@ -18,9 +15,8 @@ function init(count = 1) {
         },
         responseType: 'arraybuffer'
     })
-        .then(loadMessage)
         .then((response) => {
-            const data = response;
+            const data = TestMessage.decode(response.data); //TestMessage.decode(new Uint8Array(response.data));
             testTextArea.innerHTML = data.data;
             if (data.isFinal) { return; }
 

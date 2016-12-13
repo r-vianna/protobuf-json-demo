@@ -2,7 +2,7 @@ package testpackage;
 syntax = "proto3";
 
 message TestMessage {
-    int32 count = 1;
-    string data = 2;
-    string isFinal = 3;
+    required int32 count = 1;
+    required string data = 2;
+    required bool isFinal = 3;
 };
