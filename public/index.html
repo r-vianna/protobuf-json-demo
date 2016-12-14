@@ -1,15 +1,39 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>Buffer vs JSON Test - Buffers</title>
-    </head>
 
-    <body>
-        <header class="viewport"></header>
-        <article class="viewport">
+<head>
+    <meta charset="UTF-8" />
+    <title>Buffer vs JSON Test - Buffers</title>
+</head>
+
+<body>
+    <header class="viewport"></header>
+
+    <div id="main" class="main viewport">
+        <aside class="results">
+            <table id="results_json">
+                <thead><tr>JSON Reuslts</tr></thead>
+                <tbody></tbody>
+            </table>
+        </aside>
+        <article class="main-test-area">
             <textarea class="test-area"></textarea>
         </article>
-        <script src="/build/app.bundle.js"></script>
-    </body>
+        <aside class="results">
+            <table id="results_buffer">
+                <thead><tr>Buffer Results</tr></thead>
+                <tbody></tbody>
+            </table>
+        </aside>
+    </div>
+
+    <footer>
+        <div id="test_types"></div>
+        <div id="test_start">
+            <button>Start Tests</button>
+        </div>
+    </footer>
+    <script src="/build/app.bundle.js"></script>
+</body>
+
 </html>

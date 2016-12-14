@@ -9,7 +9,7 @@ let TestMessage = protobuf.load('./public/protos/message.proto')
     });
 
 function getData(ct) {
-    const isFinal = Number(ct) >= Math.pow(10, 4);
+    const isFinal = Number(ct) >= Math.pow(10, 6);
     const count = isFinal ?
         Number(ct) :
         Math.round(Number(ct) * 1.5);
@@ -29,7 +29,7 @@ router.get('/buffer', (req, res, next) => {
     res.send(msg);
 });
 
-router.get('/josn', (req, res, next) => {
+router.get('/json', (req, res, next) => {
     const data = getData(req.query.count);
     const msg = data;
 

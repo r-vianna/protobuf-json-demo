@@ -12,7 +12,7 @@ let count = 0;
 function swapHeader() {
     return new Promise((fulfill, reject) => {
         messages[count].classList.add('transition');
-        count++;
+        count += 1;
         setTimeout(() => {
             fulfill();
         }, 2000);

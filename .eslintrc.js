@@ -10,7 +10,8 @@ module.exports = {
         "linebreak-style": ["error", "windows"],
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "no-console": "off",
-        "no-plusplus": ["error", "never"],
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        "no-param-reassign": ["error", { "props": false }],
         "no-unused-expressions": ["error", { "allowShortCircuit": true }],
         "no-underscore-dangle": "off"
     },
