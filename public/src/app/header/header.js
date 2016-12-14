@@ -1,11 +1,10 @@
 const header = document.querySelector('header.viewport');
 const messages = [];
 let count = 0;
-let domMessages;
 
 ['Ok...', 'Lets Begin...'].forEach((message) => {
     const domMessage = document.createElement('h1');
-    domMessage.innerHTML= `${message}`;
+    domMessage.innerHTML = `${message}`;
     header.appendChild(domMessage);
     messages.push(domMessage);
 });
@@ -28,7 +27,7 @@ function init() {
 
 function results(time) {
     const resultMessage = document.createElement('h1');
-    resultMessage.innerHTML = `Test finished in ${time/1000} seconds`;
+    resultMessage.innerHTML = `Test finished in ${time / 1000} seconds`;
     resultMessage.classList.add('results');
     header.appendChild(resultMessage);
 }
@@ -36,4 +35,4 @@ function results(time) {
 export default {
     init,
     results
-}
+};

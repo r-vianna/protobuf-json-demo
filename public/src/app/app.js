@@ -6,7 +6,7 @@ let endTime;
 
 header.init()
     .then(() => startTime = new Date())
-    .then(() => test.init())
+    .then(() => test.buffer())
     .then(() => endTime = new Date())
     .then(() => header.results(endTime - startTime))
     .catch((err) => {
