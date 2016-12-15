@@ -6,14 +6,30 @@ const testStart = document.querySelector('#test_start button');
 
 testStart.addEventListener('click', (e) => {
     e.preventDefault();
-    Promise.resolve(results.clearResults())
+    const end = 50;
+    let i = 1;
+    function runTest() {
+        return Promise.resolve()
+            .then(() => test.json())
+            .then(() => test.buffer())
+            .then(() => {
+                console.log(`pass ${i}`);
+                if (i === end) { return false; }
+                i += 1;
+                return runTest();
+            })
+            .catch((err) => {
+                console.log(`Error!!! ${err}`);
+            });
+    }
+
+    // Start the test
+    Promise.resolve(results.clearResults)
+        .then(runTest)
         .then(() => results.setHeaders(['Server Response Time', 'UI Decode Time', 'Total Time', 'Data Size']))
-        .then(() => test.json())
-        .then(() => test.buffer())
         .then(results.setResultsJson)
         .then(results.setResultsBuffer)
-        .then(() => results.compareResults())
-        .catch((err) => {
-            console.log(`Error!!! ${err}`);
-        });
+        .then(results.compareResults)
+        .then(results.displayDiffs);
 });
+

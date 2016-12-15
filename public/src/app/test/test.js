@@ -8,7 +8,6 @@ let TestMessage = protobuf.load('./protos/message.proto')
         TestMessage = root.lookup('testpackage.TestMessage');
     });
 
-
 function buffer(count = 1) {
     const startTime = present();
     return axios.get('/data/buffer', {

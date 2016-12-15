@@ -1,3 +1,5 @@
+import compare from './compareResults';
+
 const resultsJson = {
     table: document.getElementById('results_json'),
     cells: {},
@@ -50,7 +52,7 @@ function setResults(resultTable) {
     });
 }
 
-function clearResults() {
+function clearResults(clear = true) {
     [resultsJson, resultsBuffer].forEach((results) => {
         Object.keys(results).forEach((key) => {
             switch (key) {
@@ -60,7 +62,7 @@ function clearResults() {
                     results[key] = {};
                     break;
                 case 'results':
-                    results[key] = [];
+                    results[key] = clear ? [] : results[key];
                     break;
                 default:
                     results[key].innerHTML = '';
@@ -103,6 +105,9 @@ export default {
     },
     setResultsBuffer() {
         setResults(resultsBuffer);
+    },
+    displayDiffs() {
+        compare.compareResults(resultsJson.results, resultsBuffer.results);
     },
     setHeaders,
     clearResults,
