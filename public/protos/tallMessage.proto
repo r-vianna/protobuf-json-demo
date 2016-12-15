@@ -1,0 +1,32 @@
+package testtallpackage;
+syntax = "proto3";
+
+message TestTallMessage {
+    required int32 count = 1;
+    required string data0 = 2;
+    required string data1 = 3;
+    required string data2 = 4;
+    required string data3 = 5;
+    required string data4 = 6;
+    required string data5 = 7;
+    required string data6 = 8;
+    required string data7 = 9;
+    required string data8 = 10;
+    required string data9 = 11;
+    required string data10 = 12;
+    required string data11 = 13;
+    required string data12 = 14;
+    required string data13 = 15;
+    required string data14 = 16;
+    required string data15 = 17;
+    required string data16 = 18;
+    required string data17 = 19;
+    required string data18 = 20;
+    required string data19 = 21;
+    required string data20 = 22;
+    required string data21 = 23;
+    required string data22 = 24;
+    required string data23 = 25;
+    required string data24 = 26;
+    required bool isFinal = 27;
+};

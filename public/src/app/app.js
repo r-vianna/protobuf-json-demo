@@ -6,7 +6,7 @@ const testStart = document.querySelector('#test_start button');
 
 testStart.addEventListener('click', (e) => {
     e.preventDefault();
-    const end = 50;
+    const end = 100;
     let i = 1;
     function runTest() {
         return Promise.resolve()
@@ -17,19 +17,19 @@ testStart.addEventListener('click', (e) => {
                 if (i === end) { return false; }
                 i += 1;
                 return runTest();
-            })
-            .catch((err) => {
-                console.log(`Error!!! ${err}`);
             });
     }
 
     // Start the test
-    Promise.resolve(results.clearResults)
+    Promise.resolve(results.clearResults())
         .then(runTest)
         .then(() => results.setHeaders(['Server Response Time', 'UI Decode Time', 'Total Time', 'Data Size']))
         .then(results.setResultsJson)
         .then(results.setResultsBuffer)
         .then(results.compareResults)
-        .then(results.displayDiffs);
+        .then(results.displayDiffs)
+        .catch((err) => {
+            console.log(`Error!!! ${err}`);
+        });
 });
 

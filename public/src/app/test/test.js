@@ -8,9 +8,14 @@ let TestMessage = protobuf.load('./protos/message.proto')
         TestMessage = root.lookup('testpackage.TestMessage');
     });
 
+let TestTallMessage = protobuf.load('./protos/tallMessage.proto')
+    .then((root) => {
+        TestTallMessage = root.lookup('testtallpackage.TestTallMessage');
+    });
+
 function buffer(count = 1) {
     const startTime = present();
-    return axios.get('/data/buffer', {
+    return axios.get('/data/buffer/tall', {
         params: {
             count
         },
@@ -18,7 +23,8 @@ function buffer(count = 1) {
     })
         .then((response) => {
             const serverResponseTime = present();
-            const data = TestMessage.decode(new Uint8Array(response.data));
+            // const data = TestMessage.decode(new Uint8Array(response.data));
+            const data = TestTallMessage.decode(new Uint8Array(response.data));
             const dataProcessTime = present();
 
             if (data.isFinal) { return false; }
@@ -35,7 +41,7 @@ function buffer(count = 1) {
 
 function json(count = 1) {
     const startTime = present();
-    return axios.get('/data/json', {
+    return axios.get('/data/json/tall', {
         params: {
             count
         },
