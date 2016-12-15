@@ -9,9 +9,10 @@ let TestMessage = protobuf.load('./public/protos/message.proto')
     });
 
 function getData(ct) {
-    const isFinal = Number(ct) >= Math.pow(10, 6);
+    const limit = Math.pow(10, 6);
+    const isFinal = Number(ct) >= limit;
     const count = isFinal ?
-        Number(ct) :
+        limit :
         Math.round(Number(ct) * 1.5);
     const data = crypto.randomBytes(count).toString('hex');
 

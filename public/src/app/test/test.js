@@ -1,8 +1,8 @@
-import results from '../results/results';
 import * as protobuf from 'protobufjs';
+import present from 'present';
 import axios from 'axios';
+import results from '../results/results';
 
-const testTextArea = document.querySelector('textarea.test-area');
 let TestMessage = protobuf.load('./protos/message.proto')
     .then((root) => {
         TestMessage = root.lookup('testpackage.TestMessage');
@@ -10,7 +10,7 @@ let TestMessage = protobuf.load('./protos/message.proto')
 
 
 function buffer(count = 1) {
-    const start = new Date();
+    const startTime = present();
     return axios.get('/data/buffer', {
         params: {
             count
@@ -18,46 +18,48 @@ function buffer(count = 1) {
         responseType: 'arraybuffer'
     })
         .then((response) => {
-            const serverResponseTime = new Date() - start;
+            const serverResponseTime = present();
             const data = TestMessage.decode(new Uint8Array(response.data));
-
-            testTextArea.innerHTML = data.data;
+            const dataProcessTime = present();
 
             if (data.isFinal) { return false; }
 
-            results.setResultBuffer({
-                time: serverResponseTime,
-                uiUpdate: new Date() - start
+            results.storeResultBuffer({
+                responseTime: serverResponseTime - startTime,
+                decodeTime: dataProcessTime - serverResponseTime,
+                totalTime: dataProcessTime - startTime,
+                packageSize: response.data.byteLength
             });
             return buffer(data.count);
         });
 }
 
 function json(count = 1) {
-    const start = new Date();
-    return axios.get('/data/json', { params: { count } })
+    const startTime = present();
+    return axios.get('/data/json', {
+        params: {
+            count
+        },
+        responseType: 'text'
+    })
         .then((response) => {
-            const serverResponseTime = new Date() - start;
+            const serverResponseTime = present();
             const data = response.data;
+            const dataProcessTime = present();
 
-            testTextArea.innerHTML = data.data;
             if (data.isFinal) { return false; }
 
-            results.setResultJson({
-                time: serverResponseTime,
-                uiUpdate: new Date() - start
+            results.storeResultJson({
+                responseTime: serverResponseTime - startTime,
+                decodeTime: dataProcessTime - serverResponseTime,
+                totalTime: dataProcessTime - startTime,
+                packageSize: JSON.stringify(response.data).length
             });
             return json(data.count);
         });
 }
 
-function clearDOM() {
-    testTextArea.innerHTML = '';
-    return;
-}
-
 export default {
     buffer,
-    clearDOM,
     json
 };

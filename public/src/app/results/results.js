@@ -1,10 +1,12 @@
 const resultsJson = {
     table: document.getElementById('results_json'),
-    cells: {}
+    cells: {},
+    results: []
 };
 const resultsBuffer = {
     table: document.getElementById('results_buffer'),
-    cells: {}
+    cells: {},
+    results: []
 };
 
 // --- Setup rest of result table object --- //
@@ -25,35 +27,43 @@ function setHeaders(labels) {
     return;
 }
 
-function setResult(resultTable, data) {
-    const row = resultTable.body.insertRow(-1);
-    const rowLength = resultTable.body.rows.length ?
-        resultTable.body.rows.length - 1 :
-        0;
+function storeResult(resultFor, data) {
+    resultFor.results.push(data);
+}
 
-    Object.keys(data).forEach((key, index) => {
-        const cell = row.insertCell(index);
-        cell.innerHTML = data[key];
-        if (Number(data[key])) {
-            resultTable.cells[`${key}-${rowLength}`] = {
-                cell,
-                value: Number(data[key])
-            };
-        }
+function setResults(resultTable) {
+    const results = resultTable.results;
+
+    results.forEach((result, index) => {
+        const row = resultTable.body.insertRow(-1);
+
+        Object.keys(result).forEach((key, ind) => {
+            const cell = row.insertCell(ind);
+            cell.innerHTML = result[key];
+            if (Number(result[key])) {
+                resultTable.cells[`${key}-${index}`] = {
+                    cell,
+                    value: Number(result[key])
+                };
+            }
+        });
     });
 }
 
 function clearResults() {
-    [resultsJson, resultsBuffer].forEach((table) => {
-        Object.keys(table).forEach((key) => {
+    [resultsJson, resultsBuffer].forEach((results) => {
+        Object.keys(results).forEach((key) => {
             switch (key) {
                 case 'table':
                     break;
                 case 'cells':
-                    table[key] = {};
+                    results[key] = {};
+                    break;
+                case 'results':
+                    results[key] = [];
                     break;
                 default:
-                    table[key].innerHTML = '';
+                    results[key].innerHTML = '';
             }
         });
     });
@@ -82,11 +92,17 @@ function compareResults() {
 }
 
 export default {
-    setResultJson(data) {
-        setResult(resultsJson, data);
+    storeResultJson(data) {
+        storeResult(resultsJson, data);
     },
-    setResultBuffer(data) {
-        setResult(resultsBuffer, data);
+    storeResultBuffer(data) {
+        storeResult(resultsBuffer, data);
+    },
+    setResultsJson() {
+        setResults(resultsJson);
+    },
+    setResultsBuffer() {
+        setResults(resultsBuffer);
     },
     setHeaders,
     clearResults,
