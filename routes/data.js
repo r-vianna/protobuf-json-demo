@@ -46,10 +46,6 @@ function getTallData(ct) {
     return data;
 }
 
-router.get('/ping', (req, res, next) => {
-    res.send({ ping: true });
-});
-
 router.get('/buffer', (req, res, next) => {
     const data = getData(req.query.count);
     const msg = TestMessage.encode(data).finish();
