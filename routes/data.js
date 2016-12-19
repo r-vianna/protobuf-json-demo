@@ -21,7 +21,7 @@ function getData(ct) {
     const data = crypto.randomBytes(count).toString('hex');
 
     return {
-        count,
+        count: count === Number(ct) ? count + 1 : count,
         data,
         isFinal
     };
@@ -40,11 +40,15 @@ function getTallData(ct) {
         data[`data${i}`] = dataKey;
     }
 
-    data.count = count;
+    data.count = count === Number(ct) ? count + 1 : count;
     data.isFinal = isFinal;
 
     return data;
 }
+
+router.get('/ping', (req, res, next) => {
+    res.send({ ping: true });
+});
 
 router.get('/buffer', (req, res, next) => {
     const data = getData(req.query.count);

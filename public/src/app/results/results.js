@@ -72,7 +72,7 @@ function clearResults(clear = true) {
     return;
 }
 
-function compareResults() {
+function validateResultTables() {
     const jsonCells = resultsJson.cells;
     const bufferCells = resultsBuffer.cells;
 
@@ -106,10 +106,10 @@ export default {
     setResultsBuffer() {
         setResults(resultsBuffer);
     },
-    displayDiffs() {
+    calcDiffs() {
         compare.compareResults(resultsJson.results, resultsBuffer.results);
     },
     setHeaders,
     clearResults,
-    compareResults
+    validateResultTables
 };

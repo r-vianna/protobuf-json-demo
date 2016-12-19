@@ -26,12 +26,21 @@
             </table>
         </aside>
     </div>
-
     <footer>
-        <div id="test_types"></div>
-        <div id="test_start">
-            <button>Start Tests</button>
-        </div>
+        <form id='test_form'>
+            <fieldset>
+                <div id="test_types">
+                    <input type="radio" name="testType" value="" checked> Regular Message
+                    <input type="radio" name="testType" value="tall"> Tall Message
+                    <!--<input type="radio" name="testType" value="complex"> Complex Message-->
+                    <input id="range_input" type="range" min="1" max="100" value="10" step="1"/>
+                    <span id="range_display" class="range-display">10</span>
+                </div>
+                <div id="test_start">
+                    <button type="submit" form="test_form">Start Tests</button>
+                </div>
+            </fieldset>
+        </form>
     </footer>
     <script src="/build/app.bundle.js"></script>
 </body>
