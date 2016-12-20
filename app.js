@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const data = require('./routes/data');
 
-
 const app = express();
 
 app.use(logger('dev'));
