@@ -24,6 +24,7 @@ function compareResults(jsonData, bufferData) {
         let label = result.value > 0 ? ' Percent Decrease in ' : ' Percent Increase in ';
         label = Math.abs(result.value).toFixed(2) + label;
         label += result.title.replace(/([A-Z])/g, ' $1').trim();
+        label += ` over ${jsonData.length} data calls`;
 
         console.log(label);
     });

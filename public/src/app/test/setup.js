@@ -4,8 +4,6 @@ import test from '../test/dataCall';
 const rangeInput = document.getElementById('range_input');
 const rangeDisplay = document.getElementById('range_display');
 const testForm = document.getElementById('test_form');
-// const testStart = document.querySelector('#test_start button');
-
 
 rangeInput.addEventListener('change', () => {
     rangeDisplay.innerHTML = rangeInput.value;
@@ -42,4 +40,3 @@ testForm.addEventListener('submit', (e) => {
             console.log(`Error!!! ${err}`);
         });
 });
-
