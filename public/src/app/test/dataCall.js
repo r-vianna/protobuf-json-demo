@@ -32,8 +32,8 @@ function findProto(type) {
 
 function buffer(type, count = 0) {
     const proto = findProto(type);
-    const startTime = present();
     const uri = type ? `/${type}` : '';
+    const startTime = present();
     return axios.get(`/data/buffer${uri}`, {
         params: {
             count
@@ -60,8 +60,8 @@ function buffer(type, count = 0) {
 }
 
 function json(type, count = 0) {
-    const startTime = present();
     const uri = type ? `/${type}` : '';
+    const startTime = present();
     return axios.get(`/data/json${uri}`, {
         params: {
             count
