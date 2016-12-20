@@ -1,7 +1,5 @@
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
-const path = require('path');
-const fs = require('fs');
 
 module.exports = (app) => {
     const compiler = webpack(webpackConfig);
