@@ -42,7 +42,7 @@ You can specify the amount of passes to be run for each test by using the slider
 ### Regular Message
 Regular message tests will create the following object to be sent back client
 
-````JSON
+````
 {
     count: 4 \\ determines the size of data keys to be created
     data: "adsfsadf" \\ random string of data where the length and size are determined by count
@@ -53,7 +53,7 @@ Regular message tests will create the following object to be sent back client
 ### Tall Message
 Tall message tests will create an object similar to the regular message but with 25 data keys to be sent back client
 
-````JSON
+````
 {
     count: 4 \\ determines the size of data keys to be created
     data0:  "adsfsadf" \\ random string of data where the length and size are determined by count
