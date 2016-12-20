@@ -7,8 +7,9 @@ module.exports = {
     ],
     "rules": {
         "comma-dangle": ["error", "never"],
-        "linebreak-style": ["error", "windows"],
+        "import/no-extraneous-dependencies": "off",
         "indent": ["error", 4, { "SwitchCase": 1 }],
+        "linebreak-style": ["error", "windows"],
         "no-console": "off",
         "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
         "no-param-reassign": ["error", { "props": false }],
