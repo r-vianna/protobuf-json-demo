@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
 const data = require('./routes/data');
-const bundler = require('./bundler');
+
 
 const app = express();
 
@@ -20,6 +20,7 @@ app.use('/data', data);
 
 // setup webpack middleware if not running in prod mode
 if (process.env.NODE_ENV !== 'prod') {
+    const bundler = require('./bundler');
     bundler(app);
 }
 
