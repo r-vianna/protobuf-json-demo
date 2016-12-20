@@ -5,13 +5,13 @@ module.exports = {
     context: path.join(__dirname, 'public'),
     entry: {
         webpack: 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-        app: [path.resolve(__dirname, 'public/src/app/app.js'),'webpack-hot-middleware/client?path=/__webpack_hmr'] // entry point location to app
+        app: [path.resolve(__dirname, 'public/src/app/app.js'), 'webpack-hot-middleware/client?path=/__webpack_hmr'] // entry point location to app
     },
     resolve: {
         root: [__dirname, path.join(__dirname, 'public/src/')]
     },
     output: {
-        path: __dirname,
+        path: path.join(__dirname, 'public/build/'),
         publicPath: '/build/',
         filename: '[name].bundle.js'
     },
@@ -24,20 +24,12 @@ module.exports = {
                 ],
                 exclude: /\.html?$/,
                 query: {
-                  presets: 'es2015',
+                    presets: 'es2015'
                 }
             },
-            // {
-            //     test: /\.html$/,
-            //     loader: 'html-loader'
-            // },
             {
                 test: /\.scss$/,
                 loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader!autoprefixer-loader',
             },
             {
                 test: /\.woff|\.woff2|\.svg|.eot|\.png|\.jpg|\.ttf/,
@@ -49,8 +41,7 @@ module.exports = {
         // Avoid publishing files when compilation fails
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        //new ExtractTextPlugin('main.css') // TODO: move to production config
+        new webpack.NoErrorsPlugin()
     ],
     // Create Sourcemaps for the bundle
     devtool: 'source-map'
