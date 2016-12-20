@@ -65,8 +65,7 @@ function json(type, count = 0) {
     return axios.get(`/data/json${uri}`, {
         params: {
             count
-        },
-        responseType: 'text'
+        }
     })
         .then((response) => {
             const serverResponseTime = present();
