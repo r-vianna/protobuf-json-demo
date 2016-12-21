@@ -13,10 +13,20 @@ footer {
     background-color: rgba(0,0,0,0.8);
     border-top: 1px solid black;
     color: white;
+    min-height: 105px;
 }
 
 fieldset {
     border: none;
+}
+
+fieldset:disabled {
+    .test-in-progress {
+        display: flex;
+    }
+    #test_start, #test_types {
+        display: none;
+    }
 }
 
 .viewport {
@@ -69,12 +79,13 @@ fieldset {
 }
 
 .form-content {
+    margin-top: 10px;
     padding: 15px 10px;
 }
 
 .form-content-title {
     position: absolute;
-    top: 0;
+    top: 5px;
 }
 
 .main-test-area {
@@ -86,6 +97,11 @@ fieldset {
     height: 500px;
     border: 1px solid #000;
     border-radius: 4px;
+}
+
+.test-in-progress {
+    display: none;
+    justify-content: center;
 }
 
 .equal {
