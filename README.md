@@ -44,9 +44,9 @@ Regular message tests will create the following object to be sent back client
 
 ````
 {
-    count: 4 \\ determines the size of data keys to be created
-    data: "adsfsadf" \\ random string of data where the length and size are determined by count
-    isFinal: false \\ when count has reached a predetermined amount isFinal will be true ending the single test run
+    count: 4, \\ determines the size of data keys to be created
+    data: "adsfsadf", \\ random string of data where the length and size are determined by count
+    isFinal: false, \\ when count has reached a predetermined amount isFinal will be true ending the single test run
 }
 ````
 
@@ -55,12 +55,12 @@ Tall message tests will create an object similar to the regular message but with
 
 ````
 {
-    count: 4 \\ determines the size of data keys to be created
-    data0:  "adsfsadf" \\ random string of data where the length and size are determined by count
-    data1:  "adsfsadf" \\ random string of data where the length and size are determined by count
-    data2:  "adsfsadf" \\ random string of data where the length and size are determined by count
+    count: 4, \\ determines the size of data keys to be created
+    data0:  "adsfsadf", \\ random string of data where the length and size are determined by count
+    data1:  "adsfsadf", \\ random string of data where the length and size are determined by count
+    data2:  "adsfsadf", \\ random string of data where the length and size are determined by count
     ...
-    data24: "adsfsadf" \\ random string of data where the length and size are determined by count
-    isFinal: false \\ when count has reached a predetermined amount isFinal will be true ending the single test run
+    data24: "adsfsadf", \\ random string of data where the length and size are determined by count
+    isFinal: false, \\ when count has reached a predetermined amount isFinal will be true ending the single test run
 }
 ````
