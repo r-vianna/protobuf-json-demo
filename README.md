@@ -31,9 +31,8 @@ You can specify the amount of passes to be run for each test by using the slider
 * Two tables will be added to UI displaying the results of every get call made for both API's
 * The percent difference will be calculated between the different API calls for each data size
     * For example, during one pass the results of the protocol buffer API with count 1 will be compared to the JSON API with count 1
-    * A positive percent difference represents a decrease in processing time for protocol buffers over JSON (protocol buffer was faster)
-    * The percent differences for all counts and for all passes will be averaged out to display an overall percent increase or decrase in the API's performance
-    * All results are represented using JSON as the baseline and comparing it to protocol buffer (percent decrease indicates protocol buffers were faster)
+    * The percent differences for all counts and for all passes will be averaged out to display an overall percent increase or decrease in the API's performance
+    * All results are represented using JSON as the baseline and comparing it to protocol buffers (percent decrease indicates protocol buffers were faster)
 
 ### Calculated items for each get request includes:
 * Time from start of get call till response of get call
