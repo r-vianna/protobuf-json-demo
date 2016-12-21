@@ -27,15 +27,19 @@ One test will consist of a series of get calls for both protocol buffers and JSO
 When all get calls have been made for both protocol buffer and JSON API's, that is considered one pass.
 You can specify the amount of passes to be run for each test by using the slider in the UI.  Default is 10 passes.
 
-### At the end of the test, the following results will be posted:
-* A table will be added to UI displaying the results of every get call made
+### Results of tests:
+* Two tables will be added to UI displaying the results of every get call made for both API's
 * The percent difference will be calculated between the different API calls for each data size
-* An average of the percent differences will be displayed in console
+    * For example, during one pass the results of the protocol buffer API with count 1 will be compared to the JSON API with count 1
+    * A positive percent difference represents a decrease in processing time for protocol buffers over JSON (protocol buffer was faster)
+    * The percent differences for all counts and for all passes will be averaged out to display an overall percent increase or decrase in the API's performance
+    * All results are represented using JSON as the baseline and comparing it to protocol buffer (percent decrease indicates protocol buffers were faster)
 
-### Time calculated for each get request includes:
+### Calculated items for each get request includes:
 * Time from start of get call till response of get call
 * Time from response till decoded data (UI usable data)
 * Overall time from initial get request to usable UI data
+* Size of response data from the get call
 
 ## The Different Testing Types
 
