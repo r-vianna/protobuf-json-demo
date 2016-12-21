@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: arial;
 }
 
 footer {
@@ -9,7 +10,9 @@ footer {
     top: 100%;
     transform: translateY(-100%);
     width: 100%;
-    background-color: white;
+    background-color: rgba(0,0,0,0.8);
+    border-top: 1px solid black;
+    color: white;
 }
 
 fieldset {
@@ -18,7 +21,7 @@ fieldset {
 
 .viewport {
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 1200px;
     min-width: 300px;
 }
 
@@ -36,6 +39,7 @@ fieldset {
         min-height: 300px;
         padding: 10px;
         flex-grow: 1;
+        text-align: center;
     }
 }
 
@@ -50,7 +54,28 @@ fieldset {
     }
 }
 
+#range_display {
+    vertical-align: super;
+}
 
+#test_types {
+    display: flex;
+    justify-content: space-between;
+}
+
+#test_start {
+    display: flex;
+    justify-content: center;
+}
+
+.form-content {
+    padding: 15px 10px;
+}
+
+.form-content-title {
+    position: absolute;
+    top: 0;
+}
 
 .main-test-area {
     display: none;

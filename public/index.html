@@ -1,42 +1,55 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>Buffer vs JSON Test - Buffers</title>
-        <!--<link href="/build/main.css" rel="stylesheet" type="text/css" />-->
-    </head>
-    <body>
-        <header class="viewport"></header>
-        <div id="main" class="main viewport">
-            <aside class="results">
-                <table id="results_json">
-                    <thead><tr>JSON Reuslts</tr></thead>
-                    <tbody></tbody>
-                </table>
-            </aside>
-            <aside class="results">
-                <table id="results_buffer">
-                    <thead><tr>Buffer Results</tr></thead>
-                    <tbody></tbody>
-                </table>
-            </aside>
-        </div>
-        <footer>
-            <form id='test_form'>
-                <fieldset>
-                    <div id="test_types">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Buffer vs JSON Test - Buffers</title>
+    <!--<link href="/build/main.css" rel="stylesheet" type="text/css" />-->
+</head>
+
+<body>
+    <header class="viewport"></header>
+    <div id="main" class="main viewport">
+        <aside class="results">
+            <table id="results_json">
+                <thead>
+                    <tr>JSON Reuslts</tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </aside>
+        <aside class="results">
+            <table id="results_buffer">
+                <thead>
+                    <tr>Buffer Results</tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </aside>
+    </div>
+    <footer>
+        <form id='test_form' class="viewport">
+            <fieldset>
+                <div id="test_types">
+                    <div class="form-content">
+                        <span class="form-content-title">Test Type</span>
                         <input type="radio" name="testType" value="" checked> Regular Message
                         <input type="radio" name="testType" value="tall"> Tall Message
                         <!--<input type="radio" name="testType" value="complex"> Complex Message-->
-                        <input id="range_input" type="range" min="1" max="100" value="10" step="1"/>
+                    </div>
+                    <div class="form-content">
+                        <span class="form-content-title">Amount of Passes</span>
+                        <input id="range_input" type="range" min="1" max="100" value="10" step="1" />
                         <span id="range_display" class="range-display">10</span>
                     </div>
-                    <div id="test_start">
-                        <button type="submit" form="test_form">Start Tests</button>
-                    </div>
-                </fieldset>
-            </form>
-        </footer>
-        <script src="/build/app.bundle.js"></script>
-    </body>
+                </div>
+                <div id="test_start">
+                    <button type="submit" form="test_form">Start Tests</button>
+                </div>
+            </fieldset>
+        </form>
+    </footer>
+    <script src="/build/app.bundle.js"></script>
+</body>
+
 </html>
