@@ -1,5 +1,8 @@
+import displayResults from './displayResults';
+
 function compareResults(jsonData, bufferData) {
     const results = [];
+    const resultMessages = [];
 
     jsonData.forEach((row, index) => {
         Object.keys(row).forEach((key, ind) => {
@@ -20,14 +23,16 @@ function compareResults(jsonData, bufferData) {
         results[i].value /= jsonData.length;
     }
 
+    resultMessages.push(`${jsonData.length} data calls made for each API`);
     results.forEach((result) => {
-        let label = result.value > 0 ? ' Percent Decrease in ' : ' Percent Increase in ';
+        let label = result.value > 0 ? ' % decr in ' : ' % incr in ';
         label = Math.abs(result.value).toFixed(2) + label;
         label += result.title.replace(/([A-Z])/g, ' $1').trim();
-        label += ` over ${jsonData.length} data calls`;
 
-        console.log(label);
+        resultMessages.push(label);
     });
+
+    displayResults.addResultSummary(resultMessages);
 }
 
 export default {
