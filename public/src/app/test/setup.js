@@ -37,6 +37,7 @@ testForm.addEventListener('submit', (e) => {
         .then(results.calcDiffs)
         .then(() => { testForm.elements[0].disabled = false; })
         .catch((err) => {
+            testForm.elements[0].disabled = false;
             console.log(`Error!!! ${err}`);
         });
 });
