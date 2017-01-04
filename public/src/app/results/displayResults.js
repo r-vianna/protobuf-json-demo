@@ -6,9 +6,9 @@ const resultsSummaryDisplay = resultsSummary.querySelector('.results-summary-dis
 
 state.registerChangeEvent(() => {
     if (state.getState()) {
-        resultsSummary.elements[0].disabled = true;
+        resultsSummary.disabled = true;
     } else {
-        resultsSummary.elements[0].disabled = false;
+        resultsSummary.disabled = false;
     }
 });
 
